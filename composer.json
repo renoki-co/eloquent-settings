@@ -1,0 +1,30 @@
+{
+    "name": "rennokki/eloquent-settings",
+    "description": "Persistent settings, associated with Eloquent Models",
+    "keywords": [
+        "eloquent",
+        "laravel",
+        "settings",
+        "setting"
+    ],
+    "homepage": "https://github.com/rennokki/eloquent-settings",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Renoki",
+            "email": "rennokki@gmail.com",
+            "homepage": "https://twitter.com/rennokki",
+            "role": "Developer"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Rennokki\\Settings\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
+}
