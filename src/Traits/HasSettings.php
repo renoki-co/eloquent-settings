@@ -14,9 +14,39 @@ trait HasSettings {
         return $this->settings()->where('key', $key)->first();
     }
 
-    public function getValue($key)
+    public function getValue($key, $cast = 'string')
     {
-        return $this->getSetting($key);
+        $value = optional($this->getSetting($key))->value;
+
+        if(is_null($value))
+            return null;
+
+        switch($cast) {
+
+            case 'string':
+                return (string) $value;
+                break;
+
+            case 'integer':
+            case 'int':
+                return (int) $value;
+                break;
+
+            case 'boolean':
+            case 'bool':
+                return (bool) ((string) $value === '1' || (string) $value === 'true');
+                break;
+
+            case 'float':
+            case 'double':
+                return (float) $value;
+                break;
+
+            default:
+                return $value;
+                break;
+
+        }
     }
 
     public function newSetting($key, $value = null)
