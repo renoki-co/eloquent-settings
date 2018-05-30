@@ -6,7 +6,7 @@ trait HasSettings {
 
     public function settings()
     {
-        return $this->morphToMany(config('eloquent-settings.model'), 'model');
+        return $this->morphMany(config('eloquent-settings.model'), 'model');
     }
 
     public function getSetting($key)
