@@ -78,19 +78,19 @@ trait HasSettings {
         return $setting;
     }
 
-    public function deleteSetting($key)
+    public function deleteSetting($key): boolean
     {
         $setting = $this->settings()->where('key', $key)->first();
 
         if(!$setting)
             return false;
 
-        return $setting->delete();
+        return (bool) $setting->delete();
     }
 
-    public function deleteSettings()
+    public function deleteSettings(): boolean
     {
-        return $this->settings()->delete();
+        return (bool) $this->settings()->delete();
     }
 
 }
