@@ -11,7 +11,7 @@ trait HasSettings {
 
     public function getSetting($key)
     {
-        return optional($this->settings()->where('key', $key)->first())->value;
+        return $this->settings()->where('key', $key)->first();
     }
 
     public function getValue($key)
