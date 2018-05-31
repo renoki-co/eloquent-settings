@@ -75,7 +75,7 @@ trait HasSettings {
             'value' => $newValue,
         ]);
 
-        return $setting;
+        return $this->settings()->where('key', $key)->first();
     }
 
     public function deleteSetting($key)
