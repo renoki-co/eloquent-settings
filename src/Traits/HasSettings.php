@@ -69,7 +69,7 @@ trait HasSettings {
         $setting = $this->settings()->where('key', $key)->first();
 
         if(!$setting)
-            return false;
+            return $this->newSetting($key, $newValue);
 
         $setting->update([
             'value' => $newValue,
