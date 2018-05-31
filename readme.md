@@ -52,11 +52,11 @@ $user->getSetting('subscribed_to_newsletter');
 
 // Returns the value, in 'string' cast type.
 // If it doesn't exist, returns null.
-$user->getValue('subscribed_to_newsletter');
+$user->getSettingValue('subscribed_to_newsletter');
 
 // Gets the value, but in cast mode.
 // This will return a boolean (true/false)
-$user->getValue('subscribed_to_newsletter', 'bool');
+$user->getSettingValue('subscribed_to_newsletter', 'bool');
 
 // Available casts: string (by default), integer, int, boolean, bool, flat, double.
 // Any other cast type will return the default cast (string)
