@@ -17,10 +17,35 @@
             "role": "Developer"
         }
     ],
-    "require": {},
+    "require": {
+        "illuminate/config": "~5.5.0|~5.6.0",
+        "illuminate/database": "~5.5.0|~5.6.0",
+        "illuminate/contracts": "~5.5.0|~5.6.0",
+        "illuminate/support": "~5.5.0|~5.6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2|^7.0",
+        "orchestra/testbench": "~3.5.0|~3.6.0",
+        "orchestra/database": "~3.5.0|~3.6.0"
+    },
     "autoload": {
         "psr-4": {
             "Rennokki\\Settings\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rennokki\\Settings\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rennokki\\Settings\\SettingsServiceProvider"
+            ]
         }
     },
     "config": {
