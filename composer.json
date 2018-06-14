@@ -18,9 +18,10 @@
         }
     ],
     "require": {
+        "doctrine/dbal": "^2.8@dev",
         "illuminate/config": "~5.5.0|~5.6.0",
-        "illuminate/database": "~5.5.0|~5.6.0",
         "illuminate/contracts": "~5.5.0|~5.6.0",
+        "illuminate/database": "~5.5.0|~5.6.0",
         "illuminate/support": "~5.5.0|~5.6.0"
     },
     "require-dev": {
