@@ -78,6 +78,22 @@ $user->newSetting('subscribed_to_newsletter', true);
 $user->updateSetting('subscribed_to_newsletter', 0);
 $user->updateSetting('subscribed_to_newsletter', false);
 
+
+// By default, the variable has its cast to 'string'.
+// You can set the cast for set & update too.
+// Next time, you can simply call getSettingValue() and it will retrieve
+// the cast it was previously stored.
+$user->newSetting('subscribed_to_newsletter', 1, 'boolean');
+$user->getSettingValue('subscribed_to_newsletter'); // (boolean) true
+$user->getSettingValue('subscribed_to_newsletter', 'integer'); // (integer) 1
+
+$user->updateSetting('subscribed_to_newsletter', 0, 'integer');
+$user->getSettingValue('subscribed_to_newsletter', 'integer'); // (integer) 1
+$user->getSettingValue('subscribed_to_newsletter', 'boolean'); // (boolean) false
+
+// When updating, you may not give a third parameter. In that case, the cast remains the same
+// as previously set.
+
 // Delete the setting.
 // Returns true/false (true if deleted)
 $user->deleteSetting('subscribed_to_newsletter');
