@@ -22,7 +22,7 @@ class Settings extends Migration
 
             $table->string('key', 100);
             $table->text('value')->nullable();
-            $table->enum('cast_type', ['string', 'interger', 'int', 'boolean', 'bool', 'float', 'double'])->default('string');
+            $table->enum('cast_type', ['string', 'integer', 'int', 'boolean', 'bool', 'float', 'double'])->default('string');
 
             $table->timestamps();
 
