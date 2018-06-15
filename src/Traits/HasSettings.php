@@ -64,7 +64,7 @@ trait HasSettings {
         return $this->settings()->save(new $model([
             'key' => $key,
             'value' => $value,
-            'cast_type' => $cast_type,
+            'cast_type' => (!is_null($cast_type)) ? $cast_type : 'string',
         ]));
     }
 
@@ -80,7 +80,7 @@ trait HasSettings {
 
         $setting->update([
             'value' => $newValue,
-            'cast_type' => ($cast_type) ?: $setting->cast_type,
+            'cast_type' => (!is_null($cast_type)) ? $cast_type : $setting->cast_type,
         ]);
 
         return $this->settings()->where('key', $key)->first();
