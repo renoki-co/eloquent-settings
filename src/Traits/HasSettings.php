@@ -53,7 +53,7 @@ trait HasSettings {
     {
         $setting = $this->getSetting($key);
 
-        if(!is_null($cast_type) && !in_array($cast_type, ['integer', 'int', 'boolean', 'bool', 'string', 'flat', 'double']))
+        if(!is_null($cast_type) && !in_array($cast_type, ['integer', 'int', 'boolean', 'bool', 'string', 'float', 'double']))
             $cast_type = 'string';
 
         if($setting)
