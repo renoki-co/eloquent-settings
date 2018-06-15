@@ -78,10 +78,16 @@ trait HasSettings {
         if(!$setting)
             return $this->newSetting($key, $newValue, $cast_type);
 
-        $setting->update([
-            'value' => $newValue,
-            'cast_type' => (!is_null($cast_type)) ? $cast_type : $setting->cast_type,
-        ]);
+        if((!is_null($cast_type)))
+            $setting->update([
+                'value' => $newValue,
+                'cast_type' => $cast_type ,
+            ]);
+        else
+            $setting->update([
+                'value' => $newValue,
+                'cast_type' => $setting->cast_type,
+            ]);
 
         return $this->settings()->where('key', $key)->first();
     }
