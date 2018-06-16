@@ -18,6 +18,7 @@ class SettingsTest extends TestCase {
     public function testGettingTheValueForNonExisting()
     {
         $this->assertEquals($this->user->getSettingValue('is_online', 'string'), null);
+        $this->assertEquals($this->user->getSettingValue('is_online', 'not_a_string'), null);
         $this->assertEquals($this->user->getSettingValue('is_online', 'int'), null);
         $this->assertEquals($this->user->getSettingValue('is_online', 'integer'), null);
         $this->assertEquals($this->user->getSettingValue('is_online', 'bool'), null);
@@ -32,6 +33,7 @@ class SettingsTest extends TestCase {
 
         $this->assertEquals($this->user->getSettingValue('is_online'), '1');
         $this->assertEquals($this->user->getSettingValue('is_online', 'string'), '1');
+        $this->assertEquals($this->user->getSettingValue('is_online', 'not_a_string'), '1');
         $this->assertEquals($this->user->getSettingValue('is_online', 'int'), 1);
         $this->assertEquals($this->user->getSettingValue('is_online', 'integer'), 1);
         $this->assertEquals($this->user->getSettingValue('is_online', 'bool'), true);
@@ -41,8 +43,9 @@ class SettingsTest extends TestCase {
 
         $this->user->newSetting('is_online', true, 'bool');
 
-        $this->assertEquals($this->user->getSettingValue('is_online'), '1');
+        $this->assertEquals($this->user->getSettingValue('is_online'), true);
         $this->assertEquals($this->user->getSettingValue('is_online', 'string'), '1');
+        $this->assertEquals($this->user->getSettingValue('is_online', 'not_a_string'), '1');
         $this->assertEquals($this->user->getSettingValue('is_online', 'int'), 1);
         $this->assertEquals($this->user->getSettingValue('is_online', 'integer'), 1);
         $this->assertEquals($this->user->getSettingValue('is_online', 'bool'), true);
@@ -55,7 +58,9 @@ class SettingsTest extends TestCase {
     {
         $this->user->newSetting('is_subscribed', false);
 
+        $this->assertEquals($this->user->getSettingValue('is_subscribed'), '0');
         $this->assertEquals($this->user->getSettingValue('is_subscribed', 'string'), '0');
+        $this->assertEquals($this->user->getSettingValue('is_subscribed', 'not_a_string'), '0');
         $this->assertEquals($this->user->getSettingValue('is_subscribed', 'int'), 0);
         $this->assertEquals($this->user->getSettingValue('is_subscribed', 'integer'), 0);
         $this->assertEquals($this->user->getSettingValue('is_subscribed', 'bool'), false);
@@ -65,7 +70,9 @@ class SettingsTest extends TestCase {
 
         $this->user->newSetting('is_subscribed', false, 'boolean');
 
+        $this->assertEquals($this->user->getSettingValue('is_subscribed'), false);
         $this->assertEquals($this->user->getSettingValue('is_subscribed', 'string'), '0');
+        $this->assertEquals($this->user->getSettingValue('is_subscribed', 'not_a_string'), '0');
         $this->assertEquals($this->user->getSettingValue('is_subscribed', 'int'), 0);
         $this->assertEquals($this->user->getSettingValue('is_subscribed', 'integer'), 0);
         $this->assertEquals($this->user->getSettingValue('is_subscribed', 'bool'), false);
@@ -78,7 +85,9 @@ class SettingsTest extends TestCase {
     {
         $this->user->newSetting('coins', 10);
 
+        $this->assertEquals($this->user->getSettingValue('coins'), '10');
         $this->assertEquals($this->user->getSettingValue('coins', 'string'), '10');
+        $this->assertEquals($this->user->getSettingValue('coins', 'not_a_string'), '10');
         $this->assertEquals($this->user->getSettingValue('coins', 'int'), 10);
         $this->assertEquals($this->user->getSettingValue('coins', 'integer'), 10);
         $this->assertEquals($this->user->getSettingValue('coins', 'bool'), false);
@@ -88,6 +97,7 @@ class SettingsTest extends TestCase {
 
         $this->user->newSetting('coins', 10, 'integer');
 
+        $this->assertEquals($this->user->getSettingValue('coins'), 10);
         $this->assertEquals($this->user->getSettingValue('coins', 'string'), '10');
         $this->assertEquals($this->user->getSettingValue('coins', 'int'), 10);
         $this->assertEquals($this->user->getSettingValue('coins', 'integer'), 10);
@@ -102,6 +112,7 @@ class SettingsTest extends TestCase {
         $this->user->newSetting('height', 10);
 
         $this->assertEquals($this->user->getSettingValue('height', 'string'), '10');
+        $this->assertEquals($this->user->getSettingValue('height', 'not_a_string'), '10');
         $this->assertEquals($this->user->getSettingValue('height', 'int'), 10);
         $this->assertEquals($this->user->getSettingValue('height', 'integer'), 10);
         $this->assertEquals($this->user->getSettingValue('height', 'bool'), false);
@@ -111,7 +122,9 @@ class SettingsTest extends TestCase {
 
         $this->user->newSetting('height', 10, 'float');
 
+        $this->assertEquals($this->user->getSettingValue('height'), 10.0);
         $this->assertEquals($this->user->getSettingValue('height', 'string'), '10');
+        $this->assertEquals($this->user->getSettingValue('height', 'not_a_string'), '10');
         $this->assertEquals($this->user->getSettingValue('height', 'int'), 10);
         $this->assertEquals($this->user->getSettingValue('height', 'integer'), 10);
         $this->assertEquals($this->user->getSettingValue('height', 'bool'), false);
@@ -124,6 +137,7 @@ class SettingsTest extends TestCase {
     {
         $this->user->newSetting('nickname', '@rennokki');
 
+        $this->assertEquals($this->user->getSettingValue('nickname'), '@rennokki');
         $this->assertEquals($this->user->getSettingValue('nickname', 'string'), '@rennokki');
         $this->assertEquals($this->user->getSettingValue('nickname', 'int'), null);
         $this->assertEquals($this->user->getSettingValue('nickname', 'integer'), null);
@@ -134,6 +148,7 @@ class SettingsTest extends TestCase {
 
         $this->user->newSetting('nickname', '@rennokki', 'string');
 
+        $this->assertEquals($this->user->getSettingValue('nickname'), '@rennokki');
         $this->assertEquals($this->user->getSettingValue('nickname', 'string'), '@rennokki');
         $this->assertEquals($this->user->getSettingValue('nickname', 'int'), null);
         $this->assertEquals($this->user->getSettingValue('nickname', 'integer'), null);
@@ -147,6 +162,10 @@ class SettingsTest extends TestCase {
     {
         $this->user->newSetting('existence_code', 'this_is_a_secret_code');
         $this->assertEquals($this->user->getSettingValue('existence_code'), 'this_is_a_secret_code');
+        $this->assertEquals($this->user->getSetting('existence_code')->cast_type, 'string');
+
+        $this->user->newSetting('another_existence_code', 'this_is_a_secret_code', 'this_is_not_a_string');
+        $this->assertEquals($this->user->getSetting('another_existence_code')->cast_type, 'string');
     }
 
     public function testSettingCreationWhenItAlreadyExists()
@@ -166,7 +185,7 @@ class SettingsTest extends TestCase {
         $this->assertEquals($this->user->getSettingValue('existence_code'), 'this_is_a_secret_code');
     }
 
-    public function deleteSettingWithoutExisting()
+    public function testDeleteSettingWithoutExisting()
     {
         $this->assertEquals($this->user->getSettingValue('i_do_not_exist'), null);
 
@@ -174,11 +193,25 @@ class SettingsTest extends TestCase {
         $this->assertEquals($this->user->getSettingValue('i_do_not_exist'), null);
     }
 
-    public function deleteSetting()
+    public function testDeleteSetting()
     {
-        $this->newSetting('i_exist', 'i_exist_here_i_am');
+        $this->assertEquals($this->user->deleteSetting('i_exist'), false);
+
+        $this->user->newSetting('i_exist', 'i_exist_here_i_am');
 
         $this->assertEquals($this->user->deleteSetting('i_exist'), true);
         $this->assertEquals($this->user->getSettingValue('i_exist'), null);
+    }
+
+    public function deleteAllSettings()
+    {
+        $this->assertEquals($this->settings()->count(), 0);
+
+        $this->newSetting('setting1', '1');
+        $this->newSetting('setting2', '1');
+        $this->assertEquals($this->settings()->count(), 2);
+
+        $this->assertTrue($this->deleteSettings());
+        $this->assertEquals($this->settings()->count(), 0);
     }
 }
