@@ -2,21 +2,20 @@
 
 namespace Rennokki\Settings\Test;
 
-use Orchestra\Testbench\TestCase as Orchestra;
-
 use Rennokki\Settings\Test\Models\User;
 use Rennokki\Settings\Models\SettingModel;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
     public function setUp()
     {
         parent::setUp();
-        
+
         $this->resetDatabase();
 
         $this->loadLaravelMigrations(['--database' => 'sqlite']);
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->withFactories(__DIR__.'/../database/factories');
 
         $this->artisan('migrate', ['--database' => 'sqlite']);

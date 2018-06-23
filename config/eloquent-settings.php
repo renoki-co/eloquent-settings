@@ -2,7 +2,7 @@
 
 return [
 
-    /**
+    /*
      * The model the app uses.
      * Feel free to change it however you like, but do not
      * forget to extend the original model.
