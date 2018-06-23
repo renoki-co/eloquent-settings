@@ -13,8 +13,7 @@ class Settings extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function(Blueprint $table) {
-
+        Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('model_id');
@@ -25,7 +24,6 @@ class Settings extends Migration
             $table->enum('cast_type', ['string', 'integer', 'int', 'boolean', 'bool', 'float', 'double'])->default('string');
 
             $table->timestamps();
-
         });
     }
 

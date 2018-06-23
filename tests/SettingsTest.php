@@ -2,10 +2,8 @@
 
 namespace Rennokki\Settings\Test;
 
-use Rennokki\Settings\Test\Models\User;
-
-class SettingsTest extends TestCase {
-
+class SettingsTest extends TestCase
+{
     protected $user;
 
     public function setUp()

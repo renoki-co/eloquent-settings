@@ -2,8 +2,8 @@
 
 namespace Rennokki\Settings\Traits;
 
-trait HasSettings {
-
+trait HasSettings
+{
     public function settings()
     {
         return $this->morphMany(config('eloquent-settings.model'), 'model');
@@ -18,10 +18,11 @@ trait HasSettings {
     {
         $value = optional($this->getSetting($key))->value;
 
-        if(is_null($value))
-            return null;
+        if (is_null($value)) {
+            return;
+        }
 
-        switch(($cast_type) ?: $this->getSetting($key)->cast_type) {
+        switch (($cast_type) ?: $this->getSetting($key)->cast_type) {
 
             case 'string':
                 return (string) $value;
@@ -53,18 +54,20 @@ trait HasSettings {
     {
         $setting = $this->getSetting($key);
 
-        if(!is_null($cast_type) && !in_array($cast_type, ['integer', 'int', 'boolean', 'bool', 'string', 'float', 'double']))
+        if (! is_null($cast_type) && ! in_array($cast_type, ['integer', 'int', 'boolean', 'bool', 'string', 'float', 'double'])) {
             $cast_type = 'string';
+        }
 
-        if($setting)
+        if ($setting) {
             return $this->updateSetting($key, $value, $cast_type);
+        }
 
         $model = config('eloquent-settings.model');
 
         return $this->settings()->save(new $model([
             'key' => $key,
             'value' => $value,
-            'cast_type' => (!is_null($cast_type)) ? $cast_type : 'string',
+            'cast_type' => (! is_null($cast_type)) ? $cast_type : 'string',
         ]));
     }
 
@@ -72,15 +75,17 @@ trait HasSettings {
     {
         $setting = $this->settings()->where('key', $key)->first();
 
-        if(!is_null($cast_type) && !in_array($cast_type, ['integer', 'int', 'boolean', 'bool', 'string', 'flat', 'double']))
+        if (! is_null($cast_type) && ! in_array($cast_type, ['integer', 'int', 'boolean', 'bool', 'string', 'flat', 'double'])) {
             $cast_type = 'string';
+        }
 
-        if(!$setting)
+        if (! $setting) {
             return $this->newSetting($key, $newValue, $cast_type);
+        }
 
         $setting->update([
             'value' => $newValue,
-            'cast_type' => (!is_null($cast_type)) ? $cast_type : $setting->cast_type,
+            'cast_type' => (! is_null($cast_type)) ? $cast_type : $setting->cast_type,
         ]);
 
         return $this->settings()->where('key', $key)->first();
@@ -90,8 +95,9 @@ trait HasSettings {
     {
         $setting = $this->settings()->where('key', $key)->first();
 
-        if(!$setting)
+        if (! $setting) {
             return false;
+        }
 
         return (bool) $setting->delete();
     }
@@ -100,5 +106,4 @@ trait HasSettings {
     {
         return (bool) $this->settings()->delete();
     }
-
 }
