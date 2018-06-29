@@ -4,16 +4,36 @@ namespace Rennokki\Settings\Traits;
 
 trait HasSettings
 {
+    /**
+     * Returns a morphMany relationship.
+     * 
+     * @return morphMany The relationship.
+     */
     public function settings()
     {
         return $this->morphMany(config('eloquent-settings.model'), 'model');
     }
 
+    /**
+     * Returns a Setting model instance.
+     * 
+     * @param string $key Setting key.
+     * @return SettingModel The Setting model.
+     * 
+     */
     public function getSetting($key)
     {
         return $this->settings()->where('key', $key)->first();
     }
 
+    /**
+     * Get the value of a setting by key and cast type. If no cast type is provided,
+     * it will return using the cast stored in the database.
+     * 
+     * @param string $key Setting key.
+     * @param string $cast_type The cast type of the value returned.
+     * @return null|string|integer|boolean|float The value of the setting. Null if does not exist.
+     */
     public function getSettingValue($key, $cast_type = null)
     {
         $value = optional($this->getSetting($key))->value;
@@ -50,6 +70,14 @@ trait HasSettings
         }
     }
 
+    /**
+     * Set up a new setting. If the key exists, it updated it.
+     * 
+     * @param string $key Setting key.
+     * @param null|string|integer|boolean|float $value The setting value.
+     * @param string $cast_type The cast type of the value.
+     * @return SettingModel The Setting model.
+     */
     public function newSetting($key, $value = null, $cast_type = 'string')
     {
         $setting = $this->getSetting($key);
@@ -71,6 +99,14 @@ trait HasSettings
         ]));
     }
 
+    /**
+     * Update a setting. If the key does not exist, it is added.
+     * 
+     * @param string $key Setting key.
+     * @param null|string|integer|boolean|float $newValue The setting value.
+     * @param string $cast_type The cast type of the value.
+     * @return SettingModel The Setting model.
+     */
     public function updateSetting($key, $newValue = null, $cast_type = null)
     {
         $setting = $this->settings()->where('key', $key)->first();
@@ -91,6 +127,12 @@ trait HasSettings
         return $this->settings()->where('key', $key)->first();
     }
 
+    /**
+     * Delete a setting. If does not exist, returns null.
+     * 
+     * @param string $key The setting key.
+     * @return boolean Wether the setting was deleted or not.
+     */
     public function deleteSetting($key)
     {
         $setting = $this->settings()->where('key', $key)->first();
@@ -102,6 +144,11 @@ trait HasSettings
         return (bool) $setting->delete();
     }
 
+    /**
+     * Delete all the settings.
+     * 
+     * @return boolean Wether the setting was deleted or not.
+     */
     public function deleteSettings()
     {
         return (bool) $this->settings()->delete();
