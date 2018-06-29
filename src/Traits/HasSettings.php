@@ -6,7 +6,7 @@ trait HasSettings
 {
     /**
      * Returns a morphMany relationship.
-     * 
+     *
      * @return morphMany The relationship.
      */
     public function settings()
@@ -16,10 +16,9 @@ trait HasSettings
 
     /**
      * Returns a Setting model instance.
-     * 
+     *
      * @param string $key Setting key.
      * @return SettingModel The Setting model.
-     * 
      */
     public function getSetting($key)
     {
@@ -29,10 +28,10 @@ trait HasSettings
     /**
      * Get the value of a setting by key and cast type. If no cast type is provided,
      * it will return using the cast stored in the database.
-     * 
+     *
      * @param string $key Setting key.
      * @param string $cast_type The cast type of the value returned.
-     * @return null|string|integer|boolean|float The value of the setting. Null if does not exist.
+     * @return null|string|int|bool|float The value of the setting. Null if does not exist.
      */
     public function getSettingValue($key, $cast_type = null)
     {
@@ -72,9 +71,9 @@ trait HasSettings
 
     /**
      * Set up a new setting. If the key exists, it updated it.
-     * 
+     *
      * @param string $key Setting key.
-     * @param null|string|integer|boolean|float $value The setting value.
+     * @param null|string|int|bool|float $value The setting value.
      * @param string $cast_type The cast type of the value.
      * @return SettingModel The Setting model.
      */
@@ -101,9 +100,9 @@ trait HasSettings
 
     /**
      * Update a setting. If the key does not exist, it is added.
-     * 
+     *
      * @param string $key Setting key.
-     * @param null|string|integer|boolean|float $newValue The setting value.
+     * @param null|string|int|bool|float $newValue The setting value.
      * @param string $cast_type The cast type of the value.
      * @return SettingModel The Setting model.
      */
@@ -129,9 +128,9 @@ trait HasSettings
 
     /**
      * Delete a setting. If does not exist, returns null.
-     * 
+     *
      * @param string $key The setting key.
-     * @return boolean Wether the setting was deleted or not.
+     * @return bool Wether the setting was deleted or not.
      */
     public function deleteSetting($key)
     {
@@ -146,8 +145,8 @@ trait HasSettings
 
     /**
      * Delete all the settings.
-     * 
-     * @return boolean Wether the setting was deleted or not.
+     *
+     * @return bool Wether the setting was deleted or not.
      */
     public function deleteSettings()
     {
