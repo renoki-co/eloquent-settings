@@ -6,7 +6,7 @@
 [![Monthly Downloads](https://poser.pugx.org/rennokki/eloquent-settings/d/monthly)](https://packagist.org/packages/rennokki/eloquent-settings)
 [![License](https://poser.pugx.org/rennokki/eloquent-settings/license)](https://packagist.org/packages/rennokki/eloquent-settings)
 
-[![Beerpay](https://beerpay.io/rennokki/eloquent-settings/badge.svg?style=beer-square)](https://beerpay.io/rennokki/eloquent-settings)  [![Beerpay](https://beerpay.io/rennokki/eloquent-settings/make-wish.svg?style=flat-square)](https://beerpay.io/rennokki/eloquent-settings?focus=wish)
+[![PayPal](https://img.shields.io/badge/PayPal-donate-blue.svg)](https://paypal.me/rennokki)
 
 # Eloquent Settings
 Eloquent Settings allows binding settings (key-pair values) to any eloquent model via a trait.
