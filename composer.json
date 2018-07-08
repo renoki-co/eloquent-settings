@@ -1,11 +1,14 @@
 {
     "name": "rennokki/eloquent-settings",
-    "description": "Persistent settings, associated with Eloquent Models",
+    "description": "Eloquent Settings is a package that binds key-value pairs for your models.",
     "keywords": [
         "eloquent",
         "laravel",
         "settings",
-        "setting"
+        "setting",
+        "key",
+        "value",
+        "cast"
     ],
     "homepage": "https://github.com/rennokki/eloquent-settings",
     "license": "MIT",
