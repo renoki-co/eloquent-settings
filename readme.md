@@ -85,7 +85,7 @@ $user->getSettingValue('subscribed.to.weekly.newsletter'); // null
 # Deleting settings
 Deleting settings from the database can be done using `deleteSetting()`.
 ```php
-$user->deleteSetting('subscribed_to_newsletter');
+$user->deleteSetting('subscribed.to.newsletter');
 ```
 
 To delete all settings, call `deleteSettings()`.
