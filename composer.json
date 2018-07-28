@@ -1,6 +1,6 @@
 {
     "name": "rennokki/eloquent-settings",
-    "description": "Eloquent Settings is a package that binds key-value pairs for your models.",
+    "description": "Eloquent Settings allows you to bind key-value pairs to any Laravel Eloquent model. It supports even casting for boolean, float or integer types.",
     "keywords": [
         "eloquent",
         "laravel",
