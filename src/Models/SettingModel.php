@@ -15,4 +15,9 @@ class SettingModel extends Model
     {
         return $this->morphTo();
     }
+
+    public function scopeKey($query, $key)
+    {
+        return $query->where('key', $key);
+    }
 }
