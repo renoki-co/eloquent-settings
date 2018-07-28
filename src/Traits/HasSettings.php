@@ -108,7 +108,7 @@ trait HasSettings
      */
     public function updateSetting($key, $newValue = null, $cast_type = null)
     {
-        $setting = $this->settings()->where('key', $key)->first();
+        $setting = $this->settings()->key($key)->first();
 
         if (! is_null($cast_type) && ! in_array($cast_type, ['integer', 'int', 'boolean', 'bool', 'string', 'flat', 'double'])) {
             $cast_type = 'string';
@@ -123,7 +123,7 @@ trait HasSettings
             'cast_type' => (! is_null($cast_type)) ? $cast_type : $setting->cast_type,
         ]);
 
-        return $this->settings()->where('key', $key)->first();
+        return $this->settings()->key($key)->first();
     }
 
     /**
