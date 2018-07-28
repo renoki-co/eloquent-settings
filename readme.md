@@ -9,7 +9,7 @@
 [![PayPal](https://img.shields.io/badge/PayPal-donate-blue.svg)](https://paypal.me/rennokki)
 
 # Laravel Eloquent Settings
-Eloquent Settings is a small helper to bind key-value pairs to your models.
+Eloquent Settings allows you to bind key-value pairs to any Laravel Eloquent model. It supports even casting for boolean, float or integer types.
 
 # Installation
 Install the package:
@@ -48,7 +48,8 @@ $user->newSetting('subscribed.to.newsletter', 1);
 $user->newSetting('subscribed.to.newsletter', true);
 ```
 
-By default, settings' values are stored as `string`. Don't worry, later, if you try to get them with cast,  they will return the value you have initially stored. If you store 'true' as a string, if you cast it to a boolean, you'll get `true`.
+By default, settings' values are stored as `string`. Later, if you try to get them with cast, they will return the value you have initially stored.
+If you store 'true' as a string, if you cast it to a boolean, you'll get `true`.
 
 If you plan to store it with cast type other than `string`, you can pass an additional third parameter that can be either `string`, `boolean`, `bool`, `int`, `integer`, `float` or `double`.
 ```php
@@ -56,33 +57,37 @@ $user->newSetting('subscribed.to.newsletter', true, 'bool');
 ```
 
 # Updating settings
-Updating settings can be either to values, cast types or both.
+Updating settings can be either to values, cast types or both, depending on what has changed.
 ```php
 $user->updateSetting('subscribed.to.newsletter', false, 'bool');
 ```
 
-If you don't specify a cast parameter, it will not change, only the value will change.
+If you don't specify a cast parameter, it will not change, only the value will change, or viceversa.
 
 # Getting settings & values
-You can get the Setting instance, not the value.
+You can get the Setting instance, not the value using `getSetting()`:
 ```php
 $user->getSetting('subscribed.to.newsletter'); // does not accept a cast
 ```
 
-If you plan to get the value, you can use:
+If you plan to get the value, you can use `getSettingValue()`:
 ```php
 $user->getSettingValue('subscribed.to.newsletter'); // true, as boolean
 $user->getSettingValue('subscribed.to.newsletter', 'int'); // 1, as integer
 ```
 
-**Remember, when you update or create a new setting, the cast type is stored. Next time, you don't have to call the cast parameter again.**
+Remember, when you update or create a new setting, the cast type is stored. By default, next time you don't have to call the cast parameter again because it will cast it the way it was specified on storing.
+```php
+$user->newSetting('is.cool', true, 'bool');
+$user->getSettingValue('is.cool'); // it returns true as boolean
+```
 
-Getting values of not-known settings keys, you will receive `null`.
+Getting values of not-known settings keys, you will return `null`.
 ```php
 $user->getSettingValue('subscribed.to.weekly.newsletter'); // null
 ```
 
-# Deleting settings
+# Deleting a setting
 Deleting settings from the database can be done using `deleteSetting()`.
 ```php
 $user->deleteSetting('subscribed.to.newsletter');
