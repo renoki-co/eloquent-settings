@@ -20,7 +20,7 @@ trait HasSettings
      * @param string $key Setting key.
      * @return SettingModel The Setting model.
      */
-    public function getSetting($key)
+    public function getSetting(string $key)
     {
         return $this->settings()->where('key', $key)->first();
     }
@@ -30,10 +30,10 @@ trait HasSettings
      * it will return using the cast stored in the database.
      *
      * @param string $key Setting key.
-     * @param string $cast_type The cast type of the value returned.
+     * @param string $castType The cast type of the value returned.
      * @return null|string|int|bool|float The value of the setting. Null if does not exist.
      */
-    public function getSettingValue($key, $cast_type = null)
+    public function getSettingValue(string $key, ?string $castType = null)
     {
         $value = optional($this->getSetting($key))->value;
 
@@ -41,7 +41,7 @@ trait HasSettings
             return;
         }
 
-        switch (($cast_type) ?: $this->getSetting($key)->cast_type) {
+        switch (($castType) ?: $this->getSetting($key)->cast_type) {
 
             case 'string':
                 return (string) $value;
@@ -74,19 +74,19 @@ trait HasSettings
      *
      * @param string $key Setting key.
      * @param null|string|int|bool|float $value The setting value.
-     * @param string $cast_type The cast type of the value.
+     * @param string $castType The cast type of the value.
      * @return SettingModel The Setting model.
      */
-    public function newSetting($key, $value = null, $cast_type = 'string')
+    public function newSetting(string $key, ?string $value = null, ?string $castType = 'string')
     {
         $setting = $this->getSetting($key);
 
-        if (! is_null($cast_type) && ! in_array($cast_type, ['integer', 'int', 'boolean', 'bool', 'string', 'float', 'double'])) {
-            $cast_type = 'string';
+        if (! is_null($castType) && ! in_array($castType, ['integer', 'int', 'boolean', 'bool', 'string', 'float', 'double'])) {
+            $castType = 'string';
         }
 
         if ($setting) {
-            return $this->updateSetting($key, $value, $cast_type);
+            return $this->updateSetting($key, $value, $castType);
         }
 
         $model = config('eloquent-settings.model');
@@ -94,7 +94,7 @@ trait HasSettings
         return $this->settings()->save(new $model([
             'key' => $key,
             'value' => $value,
-            'cast_type' => (! is_null($cast_type)) ? $cast_type : 'string',
+            'cast_type' => (! is_null($castType)) ? $castType : 'string',
         ]));
     }
 
@@ -103,24 +103,24 @@ trait HasSettings
      *
      * @param string $key Setting key.
      * @param null|string|int|bool|float $newValue The setting value.
-     * @param string $cast_type The cast type of the value.
+     * @param string $castType The cast type of the value.
      * @return SettingModel The Setting model.
      */
-    public function updateSetting($key, $newValue = null, $cast_type = null)
+    public function updateSetting(string $key, ?string $newValue = null, ?string $castType = null)
     {
         $setting = $this->settings()->key($key)->first();
 
-        if (! is_null($cast_type) && ! in_array($cast_type, ['integer', 'int', 'boolean', 'bool', 'string', 'flat', 'double'])) {
-            $cast_type = 'string';
+        if (! is_null($castType) && ! in_array($castType, ['integer', 'int', 'boolean', 'bool', 'string', 'flat', 'double'])) {
+            $castType = 'string';
         }
 
         if (! $setting) {
-            return $this->newSetting($key, $newValue, $cast_type);
+            return $this->newSetting($key, $newValue, $castType);
         }
 
         $setting->update([
             'value' => $newValue,
-            'cast_type' => (! is_null($cast_type)) ? $cast_type : $setting->cast_type,
+            'cast_type' => (! is_null($castType)) ? $castType : $setting->cast_type,
         ]);
 
         return $this->settings()->key($key)->first();
@@ -132,7 +132,7 @@ trait HasSettings
      * @param string $key The setting key.
      * @return bool Wether the setting was deleted or not.
      */
-    public function deleteSetting($key)
+    public function deleteSetting(string $key): bool
     {
         $setting = $this->settings()->where('key', $key)->first();
 
