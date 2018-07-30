@@ -77,7 +77,7 @@ trait HasSettings
      * @param string $castType The cast type of the value.
      * @return SettingModel The Setting model.
      */
-    public function newSetting(string $key, ?string $value = null, ?string $castType = 'string')
+    public function newSetting(string $key, $value = null, ?string $castType = 'string')
     {
         $setting = $this->getSetting($key);
 
@@ -106,7 +106,7 @@ trait HasSettings
      * @param string $castType The cast type of the value.
      * @return SettingModel The Setting model.
      */
-    public function updateSetting(string $key, ?string $newValue = null, ?string $castType = null)
+    public function updateSetting(string $key, $newValue = null, ?string $castType = null)
     {
         $setting = $this->settings()->key($key)->first();
 
