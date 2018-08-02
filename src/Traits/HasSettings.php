@@ -144,7 +144,7 @@ trait HasSettings
     }
 
     /**
-     * Check if castType is a valid option, if not return string
+     * Check if castType is a valid option, if not return string.
      *
      * @param null $castType
      * @return null|string
