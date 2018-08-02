@@ -90,7 +90,7 @@ trait HasSettings
         return $this->settings()->save(new $model([
             'key'       => $key,
             'value'     => $value,
-            'cast_type' => ( ! is_null($castType)) ? $castType : 'string',
+            'cast_type' => (! is_null($castType)) ? $castType : 'string',
         ]));
     }
 
@@ -104,7 +104,7 @@ trait HasSettings
      */
     public function updateSetting(string $key, $newValue = null, ?string $castType = null)
     {
-        if ( ! $setting = $this->getSetting($key)) {
+        if (! $setting = $this->getSetting($key)) {
             return $this->newSetting($key, $newValue, $castType);
         }
 
@@ -112,7 +112,7 @@ trait HasSettings
 
         $setting->update([
             'value'     => $newValue,
-            'cast_type' => ( ! is_null($castType)) ? $castType : $setting->cast_type,
+            'cast_type' => (! is_null($castType)) ? $castType : $setting->cast_type,
         ]);
 
         return $setting;
@@ -126,7 +126,7 @@ trait HasSettings
      */
     public function deleteSetting(string $key): bool
     {
-        if ( ! $setting = $this->getSetting($key)) {
+        if (! $setting = $this->getSetting($key)) {
             return false;
         }
 
@@ -151,7 +151,7 @@ trait HasSettings
      */
     protected function validateCastType($castType = null)
     {
-        if ( ! is_null($castType) && ! in_array($castType,
+        if (! is_null($castType) && ! in_array($castType,
                 ['integer', 'int', 'boolean', 'bool', 'string', 'float', 'double'])) {
             return 'string';
         }
