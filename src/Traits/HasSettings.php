@@ -149,7 +149,7 @@ trait HasSettings
      * @param null $castType
      * @return null|string
      */
-    protected function validateCastType($castType = null)
+    private function validateCastType($castType = null)
     {
         if (! is_null($castType) && ! in_array($castType,
                 ['integer', 'int', 'boolean', 'bool', 'string', 'float', 'double'])) {
