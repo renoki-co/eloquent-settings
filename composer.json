@@ -21,7 +21,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "laravel/framework": "~5.5"
+=======
+        "laravel/framework": "~5.5.0|~5.6.0|~5.7.0"
+>>>>>>> fa1bfa1eba9d95c3be3f9327c83524ae1c4ff25b
     },
     "require-dev": {
         "doctrine/dbal": "^2.8@dev",
