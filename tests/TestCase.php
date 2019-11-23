@@ -2,9 +2,9 @@
 
 namespace Rennokki\Settings\Test;
 
-use Rennokki\Settings\Test\Models\User;
-use Rennokki\Settings\Models\SettingModel;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Rennokki\Settings\Models\SettingModel;
+use Rennokki\Settings\Test\Models\User;
 
 abstract class TestCase extends Orchestra
 {
