@@ -5,9 +5,9 @@ namespace Rennokki\Settings\Traits;
 trait HasSettings
 {
     /**
-     * Returns a morphMany relationship.
+     * Get the settings for this model.
      *
-     * @return morphMany The relationship.
+     * @return mixed
      */
     public function settings()
     {
@@ -15,10 +15,10 @@ trait HasSettings
     }
 
     /**
-     * Returns a Setting model instance.
+     * Get the setting by key.
      *
-     * @param string $key Setting key.
-     * @return SettingModel The Setting model.
+     * @param  string  $key
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function getSetting(string $key)
     {
@@ -29,9 +29,9 @@ trait HasSettings
      * Get the value of a setting by key and cast type. If no cast type is provided,
      * it will return using the cast stored in the database.
      *
-     * @param string $key      Setting key.
-     * @param string $castType The cast type of the value returned.
-     * @return null|string|int|bool|float The value of the setting. Null if does not exist.
+     * @param  string  $key
+     * @param  string  $castType
+     * @return null|string|int|bool|float
      */
     public function getSettingValue(string $key, ?string $castType = null)
     {
@@ -43,7 +43,6 @@ trait HasSettings
         }
 
         switch (($castType) ?: $setting->cast_type) {
-
             case 'string':
                 return (string) $value;
             break;
@@ -72,10 +71,10 @@ trait HasSettings
     /**
      * Set up a new setting. If the key exists, it updated it.
      *
-     * @param string                     $key      Setting key.
-     * @param null|string|int|bool|float $value    The setting value.
-     * @param string                     $castType The cast type of the value.
-     * @return SettingModel The Setting model.
+     * @param  string  $key
+     * @param  null|string|int|bool|float $value
+     * @param  string  $castType
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function newSetting(string $key, $value = null, ?string $castType = 'string')
     {
@@ -97,10 +96,10 @@ trait HasSettings
     /**
      * Update a setting. If the key does not exist, it is added.
      *
-     * @param string                     $key      Setting key.
-     * @param null|string|int|bool|float $newValue The setting value.
-     * @param string                     $castType The cast type of the value.
-     * @return SettingModel The Setting model.
+     * @param  string  $key
+     * @param  null|string|int|bool|float  $newValue
+     * @param  string  $castType
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function updateSetting(string $key, $newValue = null, ?string $castType = null)
     {
@@ -121,8 +120,8 @@ trait HasSettings
     /**
      * Delete a setting. If does not exist, returns null.
      *
-     * @param string $key The setting key.
-     * @return bool Wether the setting was deleted or not.
+     * @param  string  $key
+     * @return bool
      */
     public function deleteSetting(string $key): bool
     {
@@ -136,7 +135,7 @@ trait HasSettings
     /**
      * Delete all the settings.
      *
-     * @return bool Wether the setting was deleted or not.
+     * @return bool
      */
     public function deleteSettings()
     {
@@ -146,7 +145,7 @@ trait HasSettings
     /**
      * Check if castType is a valid option, if not return string.
      *
-     * @param null $castType
+     * @param  null  $castType
      * @return null|string
      */
     private function validateCastType($castType = null)
