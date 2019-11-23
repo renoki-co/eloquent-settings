@@ -22,7 +22,7 @@ trait HasSettings
      */
     public function getSetting(string $key)
     {
-        return $this->settings()->where('key', $key)->first();
+        return $this->settings()->whereKey($key)->first();
     }
 
     /**
