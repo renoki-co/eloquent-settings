@@ -87,6 +87,26 @@ Getting values of not-known settings keys, you will return `null`.
 $user->getSettingValue('subscribed.to.weekly.newsletter'); // null
 ```
 
+## Casts
+The following cast types are currently supported for persisting and retrieving values:
+- `string`
+- `int` or `integer`
+- `double` or `float`
+- `bool` or `boolean`
+- `array` or `json`
+
+### When adding a setting
+```php
+$user->newSetting('subscribed.to.newsletter', true, 'boolean');
+$user->newSetting('notification.preference.channels', json_encode(['email', 'sms']), 'array');
+```
+
+### When retrieving a setting
+```php
+$user->getSettingValue('subscribed.to.newsletter', 'boolean'); // will return true
+$user->getSettingValue('notification.preference.channels', 'array'); // will return ['email', 'sms']
+```
+
 # Deleting a setting
 Deleting settings from the database can be done using `deleteSetting()`.
 ```php

@@ -31,7 +31,7 @@ trait HasSettings
      *
      * @param  string  $key
      * @param  string  $castType
-     * @return null|string|int|bool|float
+     * @return null|string|int|bool|float|array
      */
     public function getSettingValue(string $key, ?string $castType = null)
     {
@@ -60,6 +60,11 @@ trait HasSettings
             case 'float':
             case 'double':
                 return (float) $value;
+            break;
+
+	        case 'array':
+	        case 'json':
+	        	return (array) json_decode($value, true);
             break;
 
             default:
@@ -151,7 +156,7 @@ trait HasSettings
     private function validateCastType($castType = null)
     {
         if (! is_null($castType) && ! in_array($castType,
-                ['integer', 'int', 'boolean', 'bool', 'string', 'float', 'double'])) {
+                ['integer', 'int', 'boolean', 'bool', 'string', 'float', 'double', 'array', 'json'])) {
             return 'string';
         }
 
