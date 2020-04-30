@@ -1,3 +1,6 @@
+Laravel Eloquent Settings
+=========================
+
 ![CI](https://github.com/renoki-co/eloquent-settings/workflows/CI/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/renoki-co/eloquent-settings/branch/master/graph/badge.svg)](https://codecov.io/gh/renoki-co/eloquent-settings/branch/master)
 [![StyleCI](https://github.styleci.io/repos/135289030/shield?branch=master)](https://github.styleci.io/repos/135289030)
@@ -8,22 +11,14 @@
 
 [![PayPal](https://img.shields.io/badge/PayPal-donate-blue.svg)](https://paypal.me/rennokki)
 
-# Laravel Eloquent Settings
+Eloquent Settings allows you to bind key-value pairs to any Laravel Eloquent model.
 
-Eloquent Settings allows you to bind key-value pairs to any Laravel Eloquent model. It supports even casting for boolean, float or integer types.
-
-# Installation
+## 🚀 Installation
 
 Install the package:
 
 ```bash
 $ composer require rennokki/eloquent-settings
-```
-
-If your Laravel version does not support package discovery, add the following line in the `providers` array in the `config/app.php` file:
-
-```php
-Rennokki\Settings\SettingsServiceProvider::class,
 ```
 
 Publish the config file & migration files:
@@ -38,7 +33,9 @@ Migrate the database:
 $ php artisan migrate
 ```
 
-Then you can add the `HasSettings` trait to your Eloquent model:
+## 🙌 Usage
+
+You can add the `HasSettings` trait to any Eloquent model:
 
 ```php
 use Rennokki\Settings\Traits\HasSettings;
@@ -49,7 +46,7 @@ class User extends Model {
 }
 ```
 
-# Adding settings
+## Adding settings
 
 ```php
 $user->newSetting('subscribed.to.newsletter', 1);
@@ -65,7 +62,7 @@ If you plan to store it with cast type other than `string`, you can pass an addi
 $user->newSetting('subscribed.to.newsletter', true, 'bool');
 ```
 
-# Updating settings
+## Updating settings
 
 Updating settings can be either to values, cast types or both, depending on what has changed.
 
@@ -75,7 +72,7 @@ $user->updateSetting('subscribed.to.newsletter', false, 'bool');
 
 If you don't specify a cast parameter, it will not change, only the value will change, or viceversa.
 
-# Getting settings & values
+## Getting settings & values
 
 You can get the Setting instance, not the value using `getSetting()`:
 
@@ -103,7 +100,7 @@ Getting values of not-known settings keys, you will return `null`.
 $user->getSettingValue('subscribed.to.weekly.newsletter'); // null
 ```
 
-# Deleting a setting
+## Deleting a setting
 
 Deleting settings from the database can be done using `deleteSetting()`.
 
@@ -117,19 +114,25 @@ To delete all settings, call `deleteSettings()`.
 $user->deleteSettings();
 ```
 
-## Contributing
+## 🐛 Testing
+
+``` bash
+vendor/bin/phpunit
+```
+
+## 🤝 Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## Security
+## 🔒  Security
 
 If you discover any security related issues, please email alex@renoki.org instead of using the issue tracker.
 
-## Credits
+## 🎉 Credits
 
 - [Alex Renoki](https://github.com/rennokki)
 - [All Contributors](../../contributors)
 
-## License
+## 📄 License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
