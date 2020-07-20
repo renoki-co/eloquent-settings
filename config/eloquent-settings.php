@@ -3,13 +3,15 @@
 return [
 
     /*
-     * The model the app uses.
-     * Feel free to change it however you like, but do not
-     * forget to extend the original model.
-     *
-     * Or don't extend it from the original model.
-     * I'm just some text. I can't stop you.
-     */
+    |--------------------------------------------------------------------------
+    | Settings Model
+    |--------------------------------------------------------------------------
+    |
+    | You can extend anytime this model and add your own to extend model
+    | functionalities if you need to. Make sure you also set the path
+    | to the new (extended) model afterwards.
+    |
+    */
 
     'model' => \Rennokki\Settings\Models\SettingModel::class,
 
