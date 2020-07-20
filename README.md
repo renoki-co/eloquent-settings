@@ -13,6 +13,12 @@ Laravel Eloquent Settings
 
 Eloquent Settings allows you to bind key-value pairs to any Laravel Eloquent model.
 
+## 🤝 Supporting
+
+Renoki Co. on GitHub aims on bringing a lot of open source, MIT-licensed projects and helpful projects to the world. Developing and maintaining projects everyday is a harsh work and tho, we love it.
+
+If you are using your application in your day-to-day job, on presentation demos, hobby projects or even school projects, spread some kind words about our work or sponsor our work. Kind words will touch our chakras and vibe, while the sponsorships will keep the open source projects alive.
+
 ## 🚀 Installation
 
 Install the package:
@@ -135,4 +141,4 @@ If you discover any security related issues, please email alex@renoki.org instea
 
 ## 📄 License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
