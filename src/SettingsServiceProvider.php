@@ -19,7 +19,7 @@ class SettingsServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../database/migrations/2018_05_19_135648_settings.php' => database_path('migrations/2018_05_19_135648_settings.php'),
-        ], 'migration');
+        ], 'migrations');
     }
 
     /**

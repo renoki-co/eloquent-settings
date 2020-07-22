@@ -27,16 +27,16 @@ Install the package:
 $ composer require rennokki/eloquent-settings
 ```
 
-Publish the config file & migration files:
+Publish the config:
 
 ```bash
-$ php artisan vendor:publish
+$ php artisan vendor:publish --provider="RenokiCo\Settings\SettingsServiceProvider" --tag="config"
 ```
 
-Migrate the database:
+Publish the migrations:
 
 ```bash
-$ php artisan migrate
+$ php artisan vendor:publish --provider="RenokiCo\Settings\SettingsServiceProvider" --tag="migrations"
 ```
 
 ## 🙌 Usage
