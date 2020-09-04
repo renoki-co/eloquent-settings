@@ -30,13 +30,13 @@ $ composer require rennokki/eloquent-settings
 Publish the config:
 
 ```bash
-$ php artisan vendor:publish --provider="RenokiCo\Settings\SettingsServiceProvider" --tag="config"
+$ php artisan vendor:publish --provider="Rennokki\Settings\SettingsServiceProvider" --tag="config"
 ```
 
 Publish the migrations:
 
 ```bash
-$ php artisan vendor:publish --provider="RenokiCo\Settings\SettingsServiceProvider" --tag="migrations"
+$ php artisan vendor:publish --provider="Rennokki\Settings\SettingsServiceProvider" --tag="migrations"
 ```
 
 ## 🙌 Usage
