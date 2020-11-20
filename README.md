@@ -9,8 +9,6 @@ Laravel Eloquent Settings
 [![Monthly Downloads](https://poser.pugx.org/rennokki/eloquent-settings/d/monthly)](https://packagist.org/packages/rennokki/eloquent-settings)
 [![License](https://poser.pugx.org/rennokki/eloquent-settings/license)](https://packagist.org/packages/rennokki/eloquent-settings)
 
-[![PayPal](https://img.shields.io/badge/PayPal-donate-blue.svg)](https://paypal.me/rennokki)
-
 Eloquent Settings allows you to bind key-value pairs to any Laravel Eloquent model.
 
 ## 🤝 Supporting
