@@ -72,7 +72,7 @@ trait HasSettings
      * Set up a new setting. If the key exists, it updated it.
      *
      * @param  string  $key
-     * @param  null|string|int|bool|float $value
+     * @param  null|string|int|bool|float  $value
      * @param  string  $castType
      * @return \Illuminate\Database\Eloquent\Model
      */
