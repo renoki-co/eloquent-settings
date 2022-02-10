@@ -36,7 +36,7 @@ trait HasSettings
     public function getSettingValue(string $key, ?string $castType = null)
     {
         $setting = $this->getSetting($key);
-        $value = optional($setting)->value;
+        $value = $setting?->value;
 
         if (is_null($value)) {
             return null;
